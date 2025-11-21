@@ -23,14 +23,21 @@ let result3 = mySome(['soup', 'noodles', 'bike', 'ship'], function(ele) {
 console.log(result3);   // true
 *******************************************************************************/
 
-let mySome = function() {
-
+let mySome = function(arr, callback) {
+    for (let i = 0; i < arr.length; i++) {
+        if (callback(arr[i], i, arr) === true) {
+          return true;
+        }
+    }
+    return false;
 };
 
+let divisibleBy = function (num, i){
+    return num % 2 === 0 && num % 3 === 0;
+};
 
-
-
-
+let result = mySome([12, 7, 18, 25, 6, 14, 29, 24, 11, 30, 4, 19], divisibleBy);
+console.log(result);
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 module.exports = mySome;

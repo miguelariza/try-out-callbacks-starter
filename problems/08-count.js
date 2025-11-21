@@ -26,14 +26,22 @@ let result4 = count(['follow', 'the', 'yellow', 'brick', 'road'], function (str)
 console.log(result4); // 0
 *******************************************************************************/
 
-let count = function() {
-
+let count = function(arr, callback) {
+  let count = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (callback(arr[i], i, arr) === true) {
+          count++;
+        }
+    }
+  return count;
 };
 
+let divisibleBy = function (num, i){
+    return num % 2 === 0 && num % 3 === 0;
+};
 
-
-
-
+let result = count([12, 7, 18, 25, 6, 14, 29, 24, 11, 30, 4, 19], divisibleBy);
+console.log(result);
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 module.exports = count;

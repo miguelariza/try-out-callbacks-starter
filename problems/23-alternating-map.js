@@ -35,13 +35,27 @@ console.log(alternatingMap(['hEy', 'EVERYone', 'whats', 'uP??'], yell, whisper))
 
 *******************************************************************************/
 
-
-let alternatingMap = function() {
-
+let alternatingMap = function(arr, cb1, cb2) {
+  let mapAlt = arr.map(function (value, index) {
+    if (index % 2 === 0) {
+      return cb1(value);
+    }
+    return cb2(value);
+  });
+  //console.log(mapAlt);
+  return mapAlt;
 };
 
+let triple = function (ele) {
+  return ele * 3;
+};
 
+let half = function (ele) {
+  return ele / 2;
+};
 
+console.log(alternatingMap([7, 3, 2, 9, 8], triple, half));
+// [ 21, 1.5, 6, 4.5, 24 ]
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 module.exports = alternatingMap;

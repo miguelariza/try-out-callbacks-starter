@@ -22,14 +22,26 @@ console.log(atMost(['boat', 'arc', 'cat', 'car', 'academy'], 1, startsWithA));  
 
 *******************************************************************************/
 
-let atMost = function() {
-
+let atMost = function(arr, max, callback) {
+  let count = 0;
+  arr.forEach(function (value) {
+    //console.log(callback(value));
+    if (callback(value) === true) {
+      count++;
+    }
+  });
+  if (count <= max) {
+    return true;
+  }
+  return false;
 };
 
+let isEven = function(num){
+  return num % 2 === 0;
+};
 
-
-
-
+let result = atMost([2,4,5,7,9,11,12], 3, isEven);
+console.log(result);
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 module.exports = atMost;

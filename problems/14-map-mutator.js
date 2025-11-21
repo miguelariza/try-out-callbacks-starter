@@ -18,14 +18,20 @@ mapMutator(arr2, function (el, i) {
 console.log(arr2); // [ 0, 9, 20 ]
 *******************************************************************************/
 
-let mapMutator = function() {
+let mapMutator = function(arr, callback) {
 
+  arr.forEach(function(value, index) {
+    let ele = callback(value, index);
+    //console.log(ele);
+    arr.splice(index, 1, ele);
+  });
+  return arr;
 };
 
-
-
-
-
+let exponent = function(num, index){
+  //console.log(num, index);
+  return expo = num ** 5;
+};
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 module.exports = mapMutator;

@@ -37,14 +37,30 @@ let result6 = one(['apple', 'dog', 'food', 'cat'], function(el, idx) {
 console.log(result6);   // true
 *******************************************************************************/
 
-let one = function() {
-
+let one = function(arr, callback) {
+  let counter = 0;
+  for (let i = 0; i < arr.length; i++) {
+    //console.log(arr[i]);
+    if (callback(arr[i], i) === true) {
+      counter++;
+      //console.log(callback(arr[i]), counter);
+    }
+  }
+  //console.log(counter);
+  if (counter === 1) {
+    return true;
+  }
+  return false;
 };
 
+let isVowel = function (ele) {
+  let vowels = "a";
+  //console.log(vowels.includes(ele));
+  return vowels.includes(ele);
+};
 
-
-
-
+let result = one(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], isVowel);
+console.log(result);
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 module.exports = one;

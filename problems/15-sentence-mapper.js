@@ -25,14 +25,29 @@ let result2 = sentenceMapper("this is pretty cool right", removeVowels);
 console.log(result2); // 'ths s prtty cl rght'
 *******************************************************************************/
 
-let sentenceMapper = function() {
-
+let sentenceMapper = function(sentence, callback) {
+  let stcToArr = sentence.split(" ");
+  stcToArr.forEach(function (word, index) {
+    let wrd = callback(word);
+    stcToArr.splice(index, 1, wrd);
+  });
+  //return stcToArr.join('');
+  return stcToArr.join(' ');
 };
 
+let removeVowels = function (word) {
+    let newWord = "";
+    for (let i = 0; i < word.length; i++) {
+      let char = word[i];
+      if(!"aeiou".includes(char)) {
+        newWord += char;
+      }
+    }
+    return newWord;
+};
 
-
-
-
+let result = sentenceMapper("The quick brown fox jumps over the lazy dog", removeVowels);
+console.log(result);
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 module.exports = sentenceMapper;

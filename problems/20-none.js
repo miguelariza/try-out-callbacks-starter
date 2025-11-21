@@ -28,14 +28,27 @@ let result4 = none([4, -5, 7, -1], function(n) {
 console.log(result4);   // false
 *******************************************************************************/
 
-let none = function() {
-
+let none = function(arr, callback) {
+  let count = 0;
+  arr.forEach(function (value) {
+    //console.log(value);
+    //console.log(callback(value));
+    if (callback(value) === false) {
+      count++;
+    }
+  });
+  if (count === arr.length) {
+    return true;
+  }
+  return false;
 };
 
+let includeVowel = function (ele) {
+  return ele.includes("e");
+};
 
-
-
-
+let result = none(['ruby', 'topaz', 'sapphire', 'opal'], includeVowel);
+console.log(result);
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 module.exports = none;

@@ -42,9 +42,28 @@ AFTER YOU ARE FINISHED WITH THIS PROBLEM, ASK FOR A CODE REVIEW
 - How many times are you calling each callback function?
 *******************************************************************************/
 
-let selectiveMap = function() {
+let selectiveMap = function(arr, cb1, cb2) {
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (cb1(arr[i], i, arr) === true) {
+      newArr.push(cb2(arr[i], i, arr));
+    } else {
+      newArr.push(arr[i]);
+    }
+  }
 
+  return newArr;
 };
+
+let ifOdd = function (num) {
+  return num % 2 !== 0;
+};
+
+let toSquare = function(num) {
+  return Math.pow(num, 2);
+};
+
+console.log(selectiveMap([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], ifOdd, toSquare));
 
 
 

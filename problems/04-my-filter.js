@@ -19,14 +19,21 @@ let result2 = myFilter(['choose', 'big', 'words', 'only'], function (s) {
 console.log(result2);      // ['choose', 'words', 'only']
 *******************************************************************************/
 
-let myFilter = function() {
+let integers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
+let myFilter = function(arr, callback) {
+  let newArr = [];
+  arr.forEach (function (ele, i) {
+    if (callback(ele, i, arr) === true) {
+      newArr.push(ele);
+    }
+  });
+  return newArr;
 };
 
-
-
-
-
+let result = myFilter(integers, function (integer) {
+  return integer % 2 === 0;
+});
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 module.exports = myFilter;

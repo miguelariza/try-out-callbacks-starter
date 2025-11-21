@@ -29,14 +29,30 @@ console.log(chainMap(4, square, half));         // 8
 console.log(chainMap(4, half, square));         // 4
 *******************************************************************************/
 
-let chainMap = function() {
-
+let chainMap = function(num, ...args) {
+  let result = num;
+  args.forEach(function(callback) {
+    result = callback(result);
+    //console.log(result);
+  });
+  return result;
 };
 
+let exponential = function(num){
+  return num ** 5;
+};
 
+let sum = function(num){
+  //console.log(Math.floor(Math.random() * 999));
+  return num + Math.floor(Math.random() * 999);
+};
 
+let sqrt = function(num) {
+  return Math.sqrt(num);
+};
 
-
+let result = chainMap(5, exponential, sum, sqrt);
+console.log(result);
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 module.exports = chainMap;

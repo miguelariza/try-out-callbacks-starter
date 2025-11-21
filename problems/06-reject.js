@@ -21,10 +21,34 @@ let hasA = function(s) {
 console.log(reject(['breadth', 'GRAPH', 'depth', 'height'], hasA)); // [ 'depth', 'height' ]
 *******************************************************************************/
 
-let reject = function() {
+let reject = function(arr, callback) {
+
+    let newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (callback(arr[i], i, arr) === false) {
+            newArr.push(arr[i]);
+        }
+    }
+    return newArr;
 
 };
 
+let ifLength = function(word){
+    return word.length > 5;
+};
+
+console.log(reject([
+  "Algorithm",
+  "Database",
+  "Framework",
+  "Interface",
+  "Compiler",
+  "Bug",
+  "API",
+  "Tag",
+  "Key",
+  "Int"
+], ifLength));
 
 
 

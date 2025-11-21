@@ -31,14 +31,27 @@ console.log(
 // [ 'art', 'app', 'buttery' ]
 *******************************************************************************/
 
-let xorSelect = function() {
-
+let xorSelect = function(arr, cb1, cb2) {
+  let newArr = arr.filter(function (value) {
+    //console.log(cb1(value), cb2(value), value);
+    if (!(cb1(value) === cb2(value))) {
+      //console.log("Selected: " + value);
+      return value;
+    }
+  });
+  return newArr;
 };
 
+let isEven = function(n) {
+  return n % 2 === 0;
+};
 
+let isPositive = function(n) {
+  return n > 0;
+};
 
-
-
+console.log(xorSelect([-2, -1, 1, 2, 3, 4], isEven, isPositive));
+// [ -2, 1, 3 ]
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 module.exports = xorSelect;

@@ -22,14 +22,21 @@ let result3 = firstIndex(['canine', 'feline', 'tree'], function (s) {
 console.log(result3); // -1
 *******************************************************************************/
 
-let firstIndex = function() {
-
+let firstIndex = function(arr, callback) {
+  for (let i = 0; i < arr.length; i++) {
+    if (callback(arr[i]) === true) {
+      //console.log(callback(arr[i]));
+      return i;
+    }
+  }
+  return -1;
 };
 
+let result = firstIndex(["those", "jeans", "is", "pretty", "cool", "right"], function(w) {
+  return w.length === 5;
+});
 
-
-
-
+console.log(result);
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
 module.exports = firstIndex;

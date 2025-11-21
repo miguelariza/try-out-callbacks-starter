@@ -27,9 +27,27 @@ console.log(result4); // true
 
 *******************************************************************************/
 
-let exactly = function() {
+let exactly = function(arr, num, callback) {
+  let count = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (callback(arr[i], num, arr) === true) {
+      count++;
+    }
+  }
+  if (count === num) {
+    return true;
+  } else {
+    return false;
+  }
 
 };
+
+let charCount = function (word) {
+  return word.length === 5;
+};
+
+let result = exactly(["house", "duck", "table", "sun", "sea", "flower", "light", "day"], 3, charCount);
+console.log(result);
 
 
 
